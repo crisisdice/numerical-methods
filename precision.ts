@@ -13,7 +13,7 @@ const singleNumber = /^[1-9]$/
  * @param string the string representation of a floating point.
  * @return the mantissa of this number.
  */
-function parseMantissa(string: string) {
+export function parseMantissa(string: string) {
   let decimalPointFlag = false
   let significantDigitFlag = false
 
