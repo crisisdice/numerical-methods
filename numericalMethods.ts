@@ -44,7 +44,7 @@ function parseMantissa(string: string) {
 
     addNumber(isNonZero ? character : '')
   }
-  return (all === [] ? [zero] : all).join('')
+  return (all.length === 0 ? [zero] : all).join('')
 }
 
 /**
