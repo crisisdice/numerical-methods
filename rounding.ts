@@ -1,7 +1,4 @@
-function sum(numbers: number[]): number {
-  return numbers.reduce((sum, num) => sum + num, 0)
-}
-
+import { sum } from './basic'
 /*
 * Avoid floating point weirdness
 * */

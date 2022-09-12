@@ -1,3 +1,5 @@
+import { product } from './basic'
+
 /*
  *  Constants
  */
@@ -8,12 +10,12 @@ const singleNumber = /^[1-9]$/
 
 /**
  * Parse a string representation of a floating point
- * and pull out the mantissa.
+ * and return the mantissa.
  *
  * @param string the string representation of a floating point.
  * @return the mantissa of this number.
  */
-export function parseMantissa(string: string) {
+function parseMantissa(string: string) {
   let decimalPointFlag = false
   let significantDigitFlag = false
 
@@ -60,12 +62,21 @@ function numericalSignificance(n: number): number {
 /**
  * Calculate to allowed precision.
  *
- * @param result floating point representation of the product.
  * @param multiplicands the numbers multiplied.
  * @return the number to allowed precision.
  */
-export function toSignificance(result: number, multiplicands: number[]): number {
-  const getLeastSignificance = (numbers: number[]) =>
-    Math.min(...numbers.map((n) => numericalSignificance(n)))
-  return Number(result.toPrecision(getLeastSignificance(multiplicands)))
+export function toLeastSignificance(multiplicands: number[]): number {
+  return Number(
+    // calculate the product to the precision ...
+    product(multiplicands).toPrecision(
+      // ... of the smallest ... 
+      Math.min(
+        ...multiplicands.map(
+          // ... mantissa
+          (n) => numericalSignificance(n)
+        )
+      )
+    )
+  )
 }
+
