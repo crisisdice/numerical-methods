@@ -69,14 +69,13 @@ export function toLeastSignificance(multiplicands: number[]): number {
   return Number(
     // calculate the product to the precision ...
     product(multiplicands).toPrecision(
-      // ... of the smallest ... 
+      // ... of the smallest ...
       Math.min(
         ...multiplicands.map(
           // ... mantissa
-          (n) => numericalSignificance(n)
-        )
-      )
-    )
+          (n) => numericalSignificance(n),
+        ),
+      ),
+    ),
   )
 }
-
